@@ -46,13 +46,14 @@ concurrency:
 permissions: {}
 
 jobs:
-  Fuzzing:
+  fuzzing:
     - name: Eco-CI Init
       uses: green-coding-berlin/eco-ci-energy-estimation@v1
       with:
         task: start-measurement
 
-    uses: curl/curl-fuzzer/.github/workflows/ci.yml@master
+    - name: fuzzing
+      uses: curl/curl-fuzzer/.github/workflows/ci.yml@master
 
     - name: Eco-CI Measurement
       uses: green-coding-berlin/eco-ci-energy-estimation@v1
