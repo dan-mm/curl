@@ -29,6 +29,11 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
+    - name: Eco-CI Init
+      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      with:
+        task: start-measurement
+
     - uses: actions/checkout@v2
 
     - name: install prereqs
@@ -66,3 +71,14 @@ jobs:
 
     - name: check special prose
       run: a=docs/CHECKSRC.md && proselint $a
+
+    - name: Eco-CI Measurement
+      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      with:
+        task: get-measurement
+        label: 'proselint'
+
+    - name: Eco-CI Results
+      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      with:
+        task: display-results
