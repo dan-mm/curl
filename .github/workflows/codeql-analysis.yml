@@ -10,7 +10,7 @@ on:
     - master
     - '*/ci'
     paths-ignore:
-    - '**/*.md'
+    # - '**/*.md'
     - '.azure-pipelines.yml'
     - '.circleci/**'
     - '.cirrus.yml'
@@ -50,6 +50,11 @@ jobs:
     permissions:
       security-events: write
     steps:
+    - name: Eco-CI Init
+      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      with:
+        task: start-measurement
+
     - name: Checkout repository
       uses: actions/checkout@v3
 
@@ -78,3 +83,14 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
+
+    - name: Eco-CI Measurement
+      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      with:
+        task: get-measurement
+        label: 'codeql'
+
+    - name: Eco-CI Results
+      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      with:
+        task: display-results

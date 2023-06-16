@@ -10,7 +10,7 @@ on:
     - master
     - '*/ci'
     paths-ignore:
-    - '**/*.md'
+    # - '**/*.md'
     - '.azure-pipelines.yml'
     - '.circleci/**'
     - '.cirrus.yml'
@@ -159,6 +159,11 @@ jobs:
           container: 'andy5995/slackware-build-essential:15.0'
 
     steps:
+    - name: Eco-CI Init
+      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      with:
+        task: start-measurement
+
     - if: ${{ matrix.build.container == null }}
       run: |
         sudo apt-get update
@@ -328,3 +333,14 @@ jobs:
       name: 'run pytest'
       env:
         TFLAGS: "${{ matrix.build.tflags }}"
+
+    - name: Eco-CI Measurement
+      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      with:
+        task: get-measurement
+        label: "linux.yml: ${{ matrix.build.name }}"
+
+    - name: Eco-CI Results
+      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      with:
+        task: display-results

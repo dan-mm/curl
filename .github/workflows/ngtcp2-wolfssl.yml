@@ -10,7 +10,7 @@ on:
     - master
     - '*/ci'
     paths-ignore:
-    - '**/*.md'
+    # - '**/*.md'
     - '**/CMakeLists.txt'
     - '.azure-pipelines.yml'
     - '.circleci/**'
@@ -66,6 +66,11 @@ jobs:
             --enable-all --enable-quic
 
     steps:
+    - name: Eco-CI Init
+      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      with:
+        task: start-measurement
+        
     - run: |
         sudo apt-get update
         sudo apt-get install libtool autoconf automake pkg-config stunnel4 ${{ matrix.build.install }}
@@ -152,3 +157,14 @@ jobs:
     #  name: 'run pytest'
     #  env:
     #    TFLAGS: "${{ matrix.build.tflags }}"
+
+    - name: Eco-CI Measurement
+      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      with:
+        task: get-measurement
+        label: "ngtcp2-wolfssl.yml: ${{ matrix.build.name }}"
+
+    - name: Eco-CI Results
+      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      with:
+        task: display-results

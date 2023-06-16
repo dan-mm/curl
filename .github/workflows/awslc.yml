@@ -10,7 +10,7 @@ on:
     - master
     - '*/ci'
     paths-ignore:
-    - '**/*.md'
+    # - '**/*.md'
     - '.azure-pipelines.yml'
     - '.circleci/**'
     - '.cirrus.yml'
@@ -47,6 +47,11 @@ jobs:
     timeout-minutes: 30
 
     steps:
+    - name: Eco-CI Init
+      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      with:
+        task: start-measurement
+
     - run: |
         sudo apt-get update --yes
         sudo apt-get install --yes libtool autoconf automake pkg-config stunnel4
@@ -89,12 +94,28 @@ jobs:
     - run: make -C build V=1 test-ci
       name: 'run tests'
 
+    - name: Eco-CI Measurement
+      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      with:
+        task: get-measurement
+        label: 'awslc (autoconf)'
+
+    - name: Eco-CI Results
+      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      with:
+        task: display-results
+
   cmake:
     name: awslc (cmake)
     runs-on: 'ubuntu-latest'
     timeout-minutes: 15
 
     steps:
+    - name: Eco-CI Init
+      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      with:
+        task: start-measurement
+
     - run: |
         sudo apt-get update
         sudo apt-get install cmake stunnel4
@@ -124,3 +145,14 @@ jobs:
 
     - run: cmake --install build --prefix $HOME/curl --strip
       name: 'cmake install'
+
+    - name: Eco-CI Measurement
+      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      with:
+        task: get-measurement
+        label: 'awslc (cmake)'
+
+    - name: Eco-CI Results
+      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      with:
+        task: display-results
