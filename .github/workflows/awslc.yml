@@ -48,7 +48,7 @@ jobs:
 
     steps:
     - name: Eco-CI Init
-      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      uses: green-coding-berlin/eco-ci-energy-estimation@318-refactor-standalone-scripts
       with:
         task: start-measurement
 
@@ -95,13 +95,13 @@ jobs:
       name: 'run tests'
 
     - name: Eco-CI Measurement
-      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      uses: green-coding-berlin/eco-ci-energy-estimation@318-refactor-standalone-scripts
       with:
         task: get-measurement
         label: 'awslc (autoconf)'
 
     - name: Eco-CI Results
-      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      uses: green-coding-berlin/eco-ci-energy-estimation@318-refactor-standalone-scripts
       with:
         task: display-results
 
@@ -112,7 +112,7 @@ jobs:
 
     steps:
     - name: Eco-CI Init
-      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      uses: green-coding-berlin/eco-ci-energy-estimation@318-refactor-standalone-scripts
       with:
         task: start-measurement
 
@@ -147,12 +147,12 @@ jobs:
       name: 'cmake install'
 
     - name: Eco-CI Measurement
-      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      uses: green-coding-berlin/eco-ci-energy-estimation@318-refactor-standalone-scripts
       with:
         task: get-measurement
         label: 'awslc (cmake)'
 
     - name: Eco-CI Results
-      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      uses: green-coding-berlin/eco-ci-energy-estimation@318-refactor-standalone-scripts
       with:
         task: display-results

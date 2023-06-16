@@ -67,7 +67,7 @@ jobs:
 
     steps:
     - name: Eco-CI Init
-      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      uses: green-coding-berlin/eco-ci-energy-estimation@318-refactor-standalone-scripts
       with:
         task: start-measurement
         
@@ -159,12 +159,12 @@ jobs:
     #    TFLAGS: "${{ matrix.build.tflags }}"
 
     - name: Eco-CI Measurement
-      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      uses: green-coding-berlin/eco-ci-energy-estimation@318-refactor-standalone-scripts
       with:
         task: get-measurement
         label: "ngtcp2-wolfssl.yml: ${{ matrix.build.name }}"
 
     - name: Eco-CI Results
-      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      uses: green-coding-berlin/eco-ci-energy-estimation@318-refactor-standalone-scripts
       with:
         task: display-results

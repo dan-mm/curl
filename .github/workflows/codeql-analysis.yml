@@ -51,7 +51,7 @@ jobs:
       security-events: write
     steps:
     - name: Eco-CI Init
-      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      uses: green-coding-berlin/eco-ci-energy-estimation@318-refactor-standalone-scripts
       with:
         task: start-measurement
 
@@ -85,12 +85,12 @@ jobs:
       uses: github/codeql-action/analyze@v2
 
     - name: Eco-CI Measurement
-      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      uses: green-coding-berlin/eco-ci-energy-estimation@318-refactor-standalone-scripts
       with:
         task: get-measurement
         label: 'codeql'
 
     - name: Eco-CI Results
-      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      uses: green-coding-berlin/eco-ci-energy-estimation@318-refactor-standalone-scripts
       with:
         task: display-results

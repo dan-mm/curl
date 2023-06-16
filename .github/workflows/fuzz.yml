@@ -26,7 +26,7 @@ on:
     branches:
     - master
     paths-ignore:
-    - '**/*.md'
+    # - '**/*.md'
     - '**/CMakeLists.txt'
     - '.azure-pipelines.yml'
     - '.circleci/**'
@@ -48,7 +48,7 @@ permissions: {}
 jobs:
   fuzzing:
     - name: Eco-CI Init
-      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      uses: green-coding-berlin/eco-ci-energy-estimation@318-refactor-standalone-scripts
       with:
         task: start-measurement
 
@@ -56,12 +56,12 @@ jobs:
       uses: curl/curl-fuzzer/.github/workflows/ci.yml@master
 
     - name: Eco-CI Measurement
-      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      uses: green-coding-berlin/eco-ci-energy-estimation@318-refactor-standalone-scripts
       with:
         task: get-measurement
         label: 'fuzzing'
 
     - name: Eco-CI Results
-      uses: green-coding-berlin/eco-ci-energy-estimation@v1
+      uses: green-coding-berlin/eco-ci-energy-estimation@318-refactor-standalone-scripts
       with:
         task: display-results
