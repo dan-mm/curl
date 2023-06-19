@@ -5,10 +5,10 @@
 name: Fuzzer
 
 on:
-  push:
-    branches:
-    - master
-    - '*/ci'
+  # push:
+  #   branches:
+  #   - master
+  #   - '*/ci'
     paths-ignore:
     # - '**/*.md'
     - '**/CMakeLists.txt'
