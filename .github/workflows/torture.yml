@@ -97,7 +97,7 @@ jobs:
       uses: green-coding-berlin/eco-ci-energy-estimation@318-refactor-standalone-scripts
       with:
         task: get-measurement
-        label: 'torture: ${{ matrix.build.name }}'
+        label: 'torture'
 
     - name: Eco-CI Results
       uses: green-coding-berlin/eco-ci-energy-estimation@318-refactor-standalone-scripts

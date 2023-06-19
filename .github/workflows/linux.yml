@@ -338,7 +338,7 @@ jobs:
       uses: green-coding-berlin/eco-ci-energy-estimation@318-refactor-standalone-scripts
       with:
         task: get-measurement
-        label: "linux.yml: ${{ matrix.build.name }}"
+        label: "linux.yml"
 
     - name: Eco-CI Results
       uses: green-coding-berlin/eco-ci-energy-estimation@318-refactor-standalone-scripts

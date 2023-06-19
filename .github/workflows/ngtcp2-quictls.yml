@@ -150,7 +150,7 @@ jobs:
       uses: green-coding-berlin/eco-ci-energy-estimation@318-refactor-standalone-scripts
       with:
         task: get-measurement
-        label: 'ngtcp2-quictls.yml: ${{ matrix.build.name }}'
+        label: 'ngtcp2-quictls.yml'
 
     - name: Eco-CI Results
       uses: green-coding-berlin/eco-ci-energy-estimation@318-refactor-standalone-scripts
